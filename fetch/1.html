@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    2312312
+    <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Response
+    https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
+    https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API
+    -->
+    <script>
+        fetch('http://localhost:3000/hello').then(res=>{
+            // res.json()
+            // return 123
+            return res.text()
+        }).then(data=>{
+            console.log(123,data);
+        })
+    </script>
+</body>
+</html>
