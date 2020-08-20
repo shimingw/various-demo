@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="debounce">debounce</button>
+    <button id="throttling">throttling</button>
+    <script>
+      function debounce(fn, delay) {
+        let timer = null
+        return function (...args) {
+          clearTimeout(timer)
+          timer = setTimeout(() => {
+            fn.apply(this, args)
+          }, delay)
+        }
+      }
+
+      const debounceClick = debounce(function (...args) {
+        console.log(1111111, args, this)
+      }, 500)
+      const debounceBtn = document.querySelector('#debounce')
+      debounceBtn.addEventListener('click', (e) => {
+        debounceClick.call({ name: 123 }, 1, 2, 3)
+      })
+    </script>
+    <script>
+      function throttling(fn, delay) {
+        let canRun = true
+        return function (...args) {
+          if (!canRun) return
+          canRun = false
+          setTimeout(() => {
+            canRun = true
+          }, delay)
+          fn.apply(this, args)
+        }
+      }
+      const throttlingClick = throttling(function (...args) {
+        console.log(1111111, args, this)
+      }, 1000)
+      const throttlingBtn = document.querySelector('#throttling')
+      throttlingBtn.addEventListener('click', (e) => {
+        throttlingClick.call({ name: 123 }, 1, 2, 3)
+      })
+    </script>
+  </body>
+</html>

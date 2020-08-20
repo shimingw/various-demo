@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link href="./css/1.css" rel=preload as=style> -->
+    <!-- <link href="./css/2.css" rel=prefetch as=style> -->
+    <!-- <link href="./js/2.js" rel="preload" as="script" /> -->
+    <!-- <link rel="next" href="./3.html"> -->
+  </head>
+  <body>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <a href="./3.html">3</a>
+    <button id="btn1">loadJS1</button>
+    <script>
+      document.querySelector('#btn1').onclick = function () {
+        const script = document.createElement('script')
+        script.src = './js/1.js'
+        document.body.appendChild(script)
+      }
+    </script>
+    <!-- <script async src="http://datacloud.cnsuning.com/static/console_dist/resources/js/app.1590f13262f5d749d6c8.js"></script> -->
+    <!-- <script  async src="https://d3js.org/d3-hierarchy.v1.min.js"></script>
+    <script  async src="https://d3js.org/d3-hierarchy.v2.min.js"></script>
+    <script  async src="https://d3js.org/d3-hierarchy.v3.min.js"></script>
+    <script  async src="https://d3js.org/d3-hierarchy.v4.min.js"></script>
+    <script  async src="https://d3js.org/d3-hierarchy.v5.min.js"></script>
+    <script  async src="https://d3js.org/d3-hierarchy.v6.min.js"></script>
+    <script  async src="https://d3js.org/d3-hierarchy.v7.min.js"></script>
+    <script  async src="https://d3js.org/d3-hierarchy.v8.min.js"></script> -->
+    <script async src="./js/1.js"></script>
+    <script async src="./js/2.js"></script>
+    <script async src="./js/3.js"></script>
+    <script async src="./js/4.js"></script>
+    <script async src="./js/5.js"></script>
+    <script async src="./js/6.js"></script>
+    <script async src="./js/7.js"></script>
+    <script async src="./js/8.js"></script>
+    <!-- <script src="./js/2.js"></script> -->
+  </body>
+</html>

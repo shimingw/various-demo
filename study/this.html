@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      Function.prototype.myCall = function (context, ...arg) {
+        const fn = Symbol('临时属性')
+        context[fn] = this
+        context[fn](...arg)
+        delete context[fn]
+      }
+      const obj = { a: 123 }
+      function testCall() {
+        console.log(this)
+      }
+      testCall.myCall(obj)
+      console.log(obj)
+    </script>
+  </body>
+</html>
