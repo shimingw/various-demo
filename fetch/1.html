@@ -1,24 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     2312312
     <!-- https://developer.mozilla.org/zh-CN/docs/Web/API/Response
     https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch
     https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API
     -->
     <script>
-        fetch('http://localhost:3000/hello').then(res=>{
-            // res.json()
-            // return 123
-            return res.text()
-        }).then(data=>{
-            console.log(123,data);
+      //   fetch('http://localhost:3000/hello')
+      //     .then((res) => {
+      //       return res.blob()
+      //     })
+      //     .then((data) => {
+      //     })
+
+      const get = new XMLHttpRequest()
+      get.responseType = 'ms-stream'
+      get.open('get', 'http://localhost:3000/helloget?method=get', true)
+      get.send(
+        JSON.stringify({
+          method: 'getsend',
         })
+      )
+      get.onreadystatechange = function () {
+        if (get.readyState == 4 && get.status == 200) {
+          console.log(get)
+          console.log(get.response);
+          console.log();
+        }
+      }
+
+      //   const post = new XMLHttpRequest()
+
+      //   post.open('post', 'http://localhost:3000/hellopost?method=post', true)
+      //   post.setRequestHeader( 'content-type','application/json')
+      //   post.send(
+      //     JSON.stringify({
+      //       name: '123',
+      //     })
+      //   )
+
+      //   var controller = new AbortController()
+      //   var signal = controller.signal
+
+      //   ;(async function () {
+      //     const res = await (
+      //       await fetch('http://localhost:3000/hellopost', {
+      //         method: 'post',
+      //         headers: {
+      //           'content-type': 'application/json',
+      //         },
+      //         //   signal,
+      //         body: JSON.stringify({
+      //           name: '123',
+      //         }),
+      //       })
+      //     ).text()
+      //     console.log(res)
+      // .then(res=>{
+      //     return res.text()
+      // }).then(data=>{
+      //     console.log(data);
+      // })
+      //   })()
+
+      // fetch('http://localhost:3000/hellopost', {
+      //   method: 'post',
+      //   headers: {
+      //     'content-type': 'application/json',
+      //   },
+      //   responseType: 'blob',
+      //   //   signal,
+      //   body: JSON.stringify({
+      //     name: '123',
+      //   }),
+      // }).then((res) => {
+      //   console.log(res)
+      // })
+
+      // fetch('http://localhost:3000/html', {
+      //   method: 'post',
+      //   headers: {
+      //     'content-type': 'application/json',
+      //   },
+      //   //   signal,
+      //   body: JSON.stringify({
+      //     name: '123',
+      //   }),
+      // }).then((res) => {
+      //   // console.log(res);
+      //   console.log(res.headers.get('content-type'))
+      // })
+
+      //   fetch('http://localhost:3000/html', {
+      //     method: 'post',
+      //     signal,
+      //     body: JSON.stringify({
+      //       name: 123,
+      //     }),
+      //   })
+      //     .then((res) => {
+      //       console.log(res)
+      //       return res.blob()
+      //     })
+      //     .then((data) => {})
+      //     .catch((e) => {
+      //       console.log(e)
+      //     })
+
+      //   setTimeout(() => {
+      //     controller.abort()
+      //   }, 2000)
     </script>
-</body>
+  </body>
 </html>

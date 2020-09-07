@@ -5,32 +5,41 @@
     <meta name="viewport" content="width='device-width', initial-scale=1.0" />
     <title>Document</title>
     <style>
-        #SomeElementYouWantToAnimate{
-            width: 100px;
-            height: 100px;
-            background-color: red;
-        }
+      #SomeElementYouWantToAnimate {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
     </style>
   </head>
   <body>
-      <div id="SomeElementYouWantToAnimate"></div>
+    <div id="SomeElementYouWantToAnimate"></div>
     <script>
       var start = null
       var element = document.getElementById('SomeElementYouWantToAnimate')
       element.style.position = 'absolute'
 
       function step(timestamp) {
-        if (!start) start = timestamp
-        var progress = timestamp - start
-        element.style.left = Math.min(progress / 10, 200) + 'px'
-        console.log(progress);
-        
+        console.log('requestIdleCallback')
+        // if (!start) start = timestamp
+        // var progress = timestamp - start
+        // element.style.left = Math.min(progress / 10, 200) + 'px'
+        // console.log(progress);
+
         // if (progress < 2000) {
         //   window.requestAnimationFrame(step)
         // }
       }
-
-      window.requestAnimationFrame(step)
+      console.log('async1')
+      window.requestIdleCallback(step)
+      setTimeout(() => {
+        console.log(1)
+        window.requestIdleCallback(step)
+      }, 0)
+      console.log('async2')
+      setTimeout(() => {
+        console.log(2)
+      }, 0)
     </script>
   </body>
 </html>
